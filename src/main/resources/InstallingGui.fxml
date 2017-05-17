@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pw.passy.installer.controller.InstallingController">
+    <children>
+        <Pane prefHeight="118.0" prefWidth="536.0" style="-fx-background-color: #FF5722;">
+            <children>
+                <Label layoutX="8.0" layoutY="14.0" text="Installing" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="51.0" prefHeight="60.0" prefWidth="516.0" text="PASSY is installing" textFill="WHITE" />
+            </children>
+            <effect>
+                <DropShadow />
+            </effect></Pane>
+        <JFXButton fx:id="contBtn" disable="true" layoutX="468.0" layoutY="209.0" style="-fx-background-color: #4CAF50;" text="Finish" textFill="WHITE" />
+        <JFXButton fx:id="cnlBtn" layoutX="401.0" layoutY="209.0" style="-fx-background-color: #00BCD4;" text="Cancel" textFill="WHITE" />
+        <JFXButton fx:id="backBtn" disable="true" layoutX="346.0" layoutY="209.0" style="-fx-background-color: #00BCD4;" text="Back" textFill="WHITE" />
+      <JFXProgressBar fx:id="progressBar" layoutX="14.0" layoutY="143.0" prefHeight="6.0" prefWidth="516.0" />
+      <Label fx:id="infoLabel" layoutX="14.0" layoutY="157.0" prefHeight="17.0" prefWidth="516.0" text="Label" />
+    </children>
+</Pane>

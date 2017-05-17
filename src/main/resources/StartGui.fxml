@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pw.passy.installer.controller.StartController">
+   <children>
+      <Pane prefHeight="118.0" prefWidth="536.0" style="-fx-background-color: #FF5722;">
+         <children>
+            <Label layoutX="8.0" layoutY="14.0" text="PASSY Installer " textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="51.0" prefHeight="60.0" prefWidth="516.0" text="This is the Desktop installer for PASSY!&#10;This version aims to bring the Cloud Based Password Manager PASSY,&#10;to the Desktop! The installation is completely automated(If you want)" textFill="WHITE" />
+         </children>
+         <effect>
+            <DropShadow />
+         </effect></Pane>
+      <JFXButton fx:id="contBtn" layoutX="448.0" layoutY="209.0" style="-fx-background-color: #4CAF50;" text="Continue" textFill="WHITE" />
+      <JFXButton fx:id="cnlBtn" layoutX="381.0" layoutY="209.0" style="-fx-background-color: #00BCD4;" text="Cancel" textFill="WHITE" />
+      <Label layoutX="8.0" layoutY="125.0" text="Click on Continue to start the Installation" />
+   </children>
+</Pane>

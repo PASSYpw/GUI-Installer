@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pw.passy.installer.controller.SettingsModeController">
+    <children>
+        <Pane prefHeight="118.0" prefWidth="536.0" style="-fx-background-color: #FF5722;">
+            <children>
+                <Label layoutX="8.0" layoutY="14.0" text="Mode" textFill="WHITE">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label alignment="TOP_LEFT" layoutX="14.0" layoutY="51.0" prefHeight="60.0" prefWidth="516.0" text="Here you can set, which mode you want to use for the Installation" textFill="WHITE" />
+            </children>
+            <effect>
+                <DropShadow />
+            </effect></Pane>
+        <JFXButton fx:id="contBtn" layoutX="448.0" layoutY="209.0" style="-fx-background-color: #4CAF50;" text="Continue" textFill="WHITE" />
+        <JFXButton fx:id="cnlBtn" layoutX="381.0" layoutY="209.0" style="-fx-background-color: #00BCD4;" text="Cancel" textFill="WHITE" />
+      <JFXCheckBox fx:id="simpleMode" layoutX="7.0" layoutY="136.0" text="Simple mode" />
+      <Label layoutX="148.0" layoutY="125.0" prefHeight="39.0" prefWidth="287.0" text="The Installer will take care of everything,&#10; execpt the passwords" />
+      <JFXCheckBox fx:id="advMode" layoutX="7.0" layoutY="177.0" text="Advanced Mode" />
+      <Label layoutX="148.0" layoutY="166.0" prefHeight="39.0" prefWidth="375.0" text="The Installer will give you them option to change everything&#10; add your needs!" />
+      <JFXButton fx:id="backBtn" layoutX="326.0" layoutY="209.0" style="-fx-background-color: #00BCD4;" text="Back" textFill="WHITE" />
+    </children>
+</Pane>
