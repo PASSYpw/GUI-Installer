@@ -30,4 +30,7 @@ public class AdvancedSettings {
 
     @FXML
     public JFXButton pathBtn;
+
+    @FXML
+    public JFXTextField phpPort;
 }

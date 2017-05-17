@@ -17,8 +17,9 @@ class InstallationManager(val stage: Stage) {
     var saves = HashMap<Int, Scene>()
 
     //preset defaults
-    var apachePort = 24480
+    var nginxPort = 24480
     var mysqlPort = 24406
+    var phpPort = 24488
     var startWithSystem = false
     var homeDir = ""
     var mysqlPass = ""
@@ -81,12 +82,14 @@ class InstallationManager(val stage: Stage) {
                 avdController.contBtn.setOnAction {
                     val apacheP = avdController.apachePort.text
                     val sqlP = avdController.mysqlPort.text
+                    val pP = avdController.phpPort.text
                     startWithSystem = avdController.startwithSystem.isSelected
-                    if (apacheP == null || sqlP == null) return@setOnAction
+                    if (apacheP == null || sqlP == null || pP == null) return@setOnAction
 
                     try {
-                        if (apacheP.toInt() != 0 && apacheP.toInt() != apachePort) apachePort = apacheP.toInt()
+                        if (apacheP.toInt() != 0 && apacheP.toInt() != nginxPort) nginxPort = apacheP.toInt()
                         if (sqlP.toInt() != 0 && sqlP.toInt() != mysqlPort) mysqlPort = sqlP.toInt()
+                        if (pP.toInt() != 0 && pP.toInt() != phpPort) phpPort = pP.toInt()
                     } catch (e: Exception) {
                         return@setOnAction
                     }
@@ -118,7 +121,7 @@ class InstallationManager(val stage: Stage) {
             c.info.text = "Enter Passwords"
             c.contBtn.setOnAction {
                 if (checkPasses(c.pass1.text, c.pass2.text).first) {
-                    Installer(apachePort, mysqlPort, mysqlPass, stage, homeDir)
+                    Installer(nginxPort, mysqlPort, phpPort, mysqlPass, stage, homeDir)
                 }
             }
             c.pass1.setOnKeyReleased {

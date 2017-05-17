@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pw.passy.installer.controller.AdvancedSettings">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="536.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pw.passy.installer.controller.AdvancedSettings">
     <children>
         <Pane prefHeight="118.0" prefWidth="536.0" style="-fx-background-color: #FF5722;">
             <children>
@@ -25,12 +25,14 @@
         <JFXButton fx:id="contBtn" layoutX="448.0" layoutY="209.0" style="-fx-background-color: #4CAF50;" text="Continue" textFill="WHITE" />
         <JFXButton fx:id="cnlBtn" layoutX="381.0" layoutY="209.0" style="-fx-background-color: #00BCD4;" text="Cancel" textFill="WHITE" />
         <JFXButton fx:id="backBtn" layoutX="326.0" layoutY="209.0" style="-fx-background-color: #00BCD4;" text="Back" textFill="WHITE" />
-      <Label layoutX="14.0" layoutY="137.0" text="Apache Port" />
+      <Label layoutX="14.0" layoutY="137.0" text="Nginx Port" />
       <JFXTextField fx:id="apachePort" focusColor="#00bcd4" labelFloat="true" layoutX="97.0" layoutY="133.0" prefHeight="25.0" prefWidth="60.0" promptText="Port" text="24480" unFocusColor="#cccccc" />
       <Label layoutX="14.0" layoutY="188.0" text="MySQL Port" />
       <JFXTextField fx:id="mysqlPort" focusColor="#00bcd4" labelFloat="true" layoutX="97.0" layoutY="184.0" prefHeight="25.0" prefWidth="60.0" promptText="Port" text="24406" unFocusColor="#cccccce8" />
       <JFXButton fx:id="pathBtn" layoutX="492.0" layoutY="131.0" prefHeight="27.0" prefWidth="26.0" text="..." />
       <JFXTextField fx:id="instPath" focusColor="#00bcd4" labelFloat="true" layoutX="170.0" layoutY="133.0" prefHeight="25.0" prefWidth="308.0" promptText="Installation Path" unFocusColor="#cccccce8" />
       <JFXCheckBox fx:id="startwithSystem" layoutY="223.0" text="Start with the System" />
+      <Label layoutX="170.0" layoutY="188.0" text="PHP-CGI Port" />
+      <JFXTextField fx:id="phpPort" focusColor="#00bcd4" labelFloat="true" layoutX="253.0" layoutY="184.0" prefHeight="25.0" prefWidth="60.0" promptText="Port" text="24400" unFocusColor="#cccccce8" />
     </children>
 </Pane>

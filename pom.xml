@@ -43,6 +43,16 @@
             <artifactId>jfoenix</artifactId>
             <version>1.4.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.ini4j</groupId>
+            <artifactId>ini4j</artifactId>
+            <version>0.5.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.binaryone</groupId>
+            <artifactId>jutils</artifactId>
+            <version>1.1</version>
+        </dependency>
     </dependencies>
 
 </project>
