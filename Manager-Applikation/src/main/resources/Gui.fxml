@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="225.0" prefWidth="365.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="pw.passy.offmng.Controller">
+   <children>
+      <Pane prefHeight="75.0" prefWidth="365.0" style="-fx-background-color: #FF5722;">
+         <children>
+            <Label layoutX="14.0" layoutY="-4.0" prefHeight="36.0" prefWidth="167.0" text="PASSY Manager" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </Pane>
+      <JFXButton fx:id="stopBtn" layoutX="256.0" layoutY="185.0" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #00BCD4;" text="Stop" textFill="WHITE" />
+      <JFXButton fx:id="restartBtn" layoutX="155.0" layoutY="185.0" prefHeight="27.0" prefWidth="92.0" style="-fx-background-color: #00BCD4;" text="Restart" textFill="WHITE" />
+      <JFXRadioButton fx:id="nginxState" layoutY="85.0" prefHeight="17.0" prefWidth="220.0" text="Web Server" />
+      <JFXRadioButton fx:id="phpState" layoutY="110.0" prefHeight="17.0" prefWidth="220.0" text="PHP Server" />
+      <JFXRadioButton fx:id="mysqlState" layoutY="135.0" prefHeight="17.0" prefWidth="220.0" text="MySQL Server" />
+      <JFXButton fx:id="helpBtn" layoutX="14.0" layoutY="185.0" text="Help" />
+      <Label fx:id="nginxLabel" layoutX="289.0" layoutY="85.0" prefHeight="17.0" prefWidth="58.0" text="Label" />
+      <Label fx:id="phpLabel" layoutX="289.0" layoutY="110.0" prefHeight="17.0" prefWidth="58.0" text="Label" />
+      <Label fx:id="mysqlLabel" layoutX="289.0" layoutY="135.0" prefHeight="17.0" prefWidth="58.0" text="Label" />
+   </children>
+</Pane>

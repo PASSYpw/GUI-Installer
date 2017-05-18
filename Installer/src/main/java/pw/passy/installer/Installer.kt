@@ -7,8 +7,11 @@ import javafx.scene.Scene
 import javafx.stage.Stage
 import org.binaryone.jutils.io.FileUtils
 import org.binaryone.jutils.io.IOUtils
+import org.ini4j.Ini
 import pw.passy.installer.controller.InstallingController
+import java.io.BufferedReader
 import java.io.File
+import java.io.InputStreamReader
 import java.net.URL
 import javax.rmi.CORBA.Util
 
@@ -49,21 +52,31 @@ class Installer(val nginxPort:Int, val mySqlPort:Int, val phpPort:Int, val mysql
                 }
                 updateProgress(5,100)
                 updateMessage("Downloading Components...")
-                Utils.downloadFile(URL(""), File(dir, "all.zip"))
+                Utils.downloadFile(URL("https://api.liz3.net/storage/passy/services.zip"), File(dir, "all.zip"))
 
 
                 updateProgress(40,100)
                 updateMessage("Unzipping Components...")
                 Utils.unZip(File(dir, "all.zip").absolutePath, File(dir, "bin").absolutePath)
 
+                updateProgress(55,100)
+                updateMessage("Downloading PASSY Platform...")
+                Utils.downloadFile(URL("https://api.liz3.net/storage/passy/passy.zip"), File(dir, "passy.zip"))
 
-                updateProgress(60,100)
+                updateProgress(70,100)
+                updateMessage("Unzipping PASSY Platform...")
+                Utils.unZip(File(dir, "passy.zip").absolutePath, File(dir,"web").absolutePath)
+
+
+                updateProgress(80,100)
                 updateMessage("Setting up Configs...")
-                //MYSQL
+
                 var mysql = String(IOUtils.convertStreamToByteArray(javaClass.getResourceAsStream("/configs/my.ini")))
                 mysql = mysql.replace("%%%MYSQLPORT%%%", mySqlPort.toString())
+                mysql = mysql.replace("%%%MYSQLROOT%%%", File(dir, "bin/mysql").absolutePath.replace("\\","/"))
+                mysql = mysql.replace("%%%MYSQLDATA%%%", File(dir, "bin/mysql/data").absolutePath.replace("\\","/"))
                 FileUtils.writeFile(mysql, File(dir, "bin/mysql/my.ini").absolutePath)
-
+                File(dir, "bin/mysql/data").mkdir()
                 var nginx = String(IOUtils.convertStreamToByteArray(javaClass.getResourceAsStream("/configs/nginx.conf")))
                 nginx = nginx.replace("%%%WEBROOT%%%", File(dir, "web").absolutePath)
                 nginx = nginx.replace("%%%WEBPORT%%%", nginxPort.toString())
@@ -76,24 +89,46 @@ class Installer(val nginxPort:Int, val mySqlPort:Int, val phpPort:Int, val mysql
 
                 var passyConf = String(IOUtils.convertStreamToByteArray(javaClass.getResourceAsStream("/configs/config.inc.php")))
                 passyConf = passyConf.replace("%%%PASSWORD%%%", mysqlPass)
+                FileUtils.writeFile(passyConf, File(dir, "web/config.inc.php").absolutePath)
 
-                Runtime.getRuntime().exec(File(dir, "bin/mysql/bin/mysqladmin.exe").absolutePath + " -u root $mysqlPass")
+                val config = File(dir, "info.ini")
+                config.createNewFile()
+                val ini = Ini(config)
+                val sec = ini.add("data")
+                sec.put("php", phpPort.toString())
+                sec.put("home", dir.absolutePath)
+                ini.store()
+
+                updateProgress(92,100)
+                updateMessage("Downloading Client...")
+                Utils.downloadFile(URL("https://api.liz3.net/storage/passy/client.jar"), File(dir, "Client.jar"))
+
+                updateProgress(100,100)
+                updateMessage("Finished!")
+                con.contBtn.setOnAction {
+
+                    Thread(Runnable {
+
+                        val pb = ProcessBuilder("java", "-jar", File(dir, "Client.jar").absolutePath, "-first", mysqlPass)
+                        val p = pb.start()
+
+                        val inStream = p.inputStream
+                        val r = BufferedReader(InputStreamReader(inStream))
+
+                        do {
+                            val line = r.readLine()
+                            if(line == null) break
 
 
+                            println(line)
+                        }while (true)
 
-                /*
-  To Replace:
-  %%%EXTENSIONDIR%%% in php.ini
 
-  %%%WEBROOT%%% in nginx.conf
-  %%%WEBPORT%%% in nginx.conf
-  %%%PHPPORT%%% in nginx.conf
+                    }).start()
+                }
+                con.contBtn.isDisable = false
 
-   %%%MYSQLPORT%%% in my.ini
 
-   %%%PASSWORD%%% in config.inc.php
-
-   */
                 return null
             }
 
